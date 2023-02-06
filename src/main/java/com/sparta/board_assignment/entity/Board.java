@@ -1,6 +1,6 @@
 package com.sparta.board_assignment.entity;
 
-import com.sparta.board_assignment.dto.MemoRequestDto;
+import com.sparta.board_assignment.dto.BoardRequestDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Getter
 @Entity
 @NoArgsConstructor
-public class Memo extends Timestamped {
+public class Board extends Timestamped {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -23,13 +23,13 @@ public class Memo extends Timestamped {
     @Column(nullable = false)
     private String title;
 
-    public Memo(MemoRequestDto requestDto){
+    public Board(BoardRequestDto requestDto){
         this.username = requestDto.getUsername();
         this.contents = requestDto.getContents();
         this.title = requestDto.getTitle();
     }
 
-    public void update(MemoRequestDto requestDto) {
+    public void update(BoardRequestDto requestDto) {
         this.username = requestDto.getUsername();
         this.contents = requestDto.getContents();
         this.title = requestDto.getTitle();

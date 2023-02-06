@@ -21,7 +21,7 @@
             // 2. 메모 목록을 불러와서 HTML로 붙입니다.
             $.ajax({
                 type: "GET",
-                url: "/api/memos",
+                url: "/api/boards",
                 data: {},
                 success: function (response) {
                     for (let i = 0; i < response.length; i++) {
@@ -126,7 +126,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "/api/memos",
+                url: "/api/boards",
                 contentType: "application/json",
                 data: JSON.stringify(data),
                 success: function (response) {
@@ -168,13 +168,11 @@
                 return;
             }
 
-            // 3. 전달할 data JSON으로 만듭니다.
             let data = {'username': username, 'contents': contents, 'title' : title};
 
-            // 4. PUT /api/memos/{id} 에 data를 전달합니다.
             $.ajax({
                 type: "PUT",
-                url: `/api/memos/${id}`,
+                url: `/api/boards/${id}`,
                 contentType: "application/json",
                 data: JSON.stringify(data),
                 success: function (response) {
@@ -187,7 +185,7 @@
         function deleteOne(id) {
             $.ajax({
                 type: "DELETE",
-                url: `/api/memos/${id}`,
+                url: `/api/boards/${id}`,
                 success: function (response) {
                     alert('메시지 삭제에 성공하였습니다.');
                     window.location.reload();
